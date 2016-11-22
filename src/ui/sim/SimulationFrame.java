@@ -19,6 +19,7 @@ public class SimulationFrame
 	// Class fields
 	private static final Random RNG = new Random();
 	private static final ImageIcon[] DICE_ICONS = new ImageIcon[6];
+	private static final Color TRANSPARENT = new Color(255, 255, 255, 0);
 	
 	private static final Border DEBUG_BORDER = new LineBorder(Color.BLACK);
 	
@@ -43,13 +44,13 @@ public class SimulationFrame
 	private JLabel lifeLabelA;
 	private LifeDisplay lifePointPanelA;
 	private JLabel rollLabelA;
-	private JLabel scoreLabelA;
+	private JTextArea scoreTextA;
 	
 	private int lifeCountB;
 	private JLabel lifeLabelB;
 	private LifeDisplay lifePointPanelB;
 	private JLabel rollLabelB;
-	private JLabel scoreLabelB;
+	private JTextArea scoreTextB;
 	
 	private JLabel statusDisp;
 	
@@ -79,7 +80,7 @@ public class SimulationFrame
 	@Override
 	protected Dimension getDimensions()
 	{
-		return new Dimension(800, 600);
+		return new Dimension(1000, 750);
 	}
 	
 	private void initStatusDisp()
@@ -220,11 +221,19 @@ public class SimulationFrame
 		rollLabelA = new JLabel();
 		playerPanel.add(rollLabelA);
 		
-		scoreLabelA = new JLabel();
-		scoreLabelA.setFont(STATES_FONT.deriveFont(18F));
-		scoreLabelA.setForeground(Config.PLAYER_A_COLOR);
-		playerPanel.add(scoreLabelA);
+		scoreTextA = buildScoreArea();
+		scoreTextA.setAlignmentX(0F);
 		
+		scoreTextA.setFont(STATES_FONT.deriveFont(18F));
+		scoreTextA.setForeground(Config.PLAYER_A_COLOR);
+		
+		JPanel scoreWrapperA = new JPanel();
+		scoreWrapperA.setLayout(new BoxLayout(scoreWrapperA, BoxLayout.PAGE_AXIS));
+		scoreWrapperA.add(Box.createVerticalGlue());
+		scoreWrapperA.add(scoreTextA);
+		scoreWrapperA.add(Box.createVerticalGlue());
+		
+		playerPanel.add(scoreWrapperA);
 		
 		// Add to frame
 		mainPanel.add(playerPanel, BorderLayout.WEST);
@@ -258,11 +267,18 @@ public class SimulationFrame
 		rollLabelB.setHorizontalAlignment(JLabel.RIGHT);
 		playerPanel.add(rollLabelB);
 		
-		scoreLabelB = new JLabel();
-		scoreLabelB.setHorizontalAlignment(JLabel.RIGHT);
-		scoreLabelB.setFont(STATES_FONT.deriveFont(18F));
-		scoreLabelB.setForeground(Config.PLAYER_B_COLOR);
-		playerPanel.add(scoreLabelB);
+		scoreTextB = buildScoreArea();
+		scoreTextB.setAlignmentX(1F);
+		
+		scoreTextB.setFont(STATES_FONT.deriveFont(18F));
+		scoreTextB.setForeground(Config.PLAYER_B_COLOR);
+		
+		JPanel scoreWrapperB = new JPanel();
+		scoreWrapperB.setLayout(new BoxLayout(scoreWrapperB,BoxLayout.PAGE_AXIS));
+		scoreWrapperB.add(Box.createVerticalGlue());
+		scoreWrapperB.add(scoreTextB);
+		scoreWrapperB.add(Box.createVerticalGlue());
+		playerPanel.add(scoreWrapperB);
 		
 		// Add to frame
 		mainPanel.add(playerPanel, BorderLayout.EAST);
@@ -286,6 +302,17 @@ public class SimulationFrame
 		playerPanel.setBorder(PLAYER_PANEL_BORDER);
 		
 		return playerPanel;
+	}
+	
+	private JTextArea buildScoreArea()
+	{
+		JTextArea scoreArea = new JTextArea();
+		scoreArea.setEditable(false);
+		
+		scoreArea.setBackground(getBackground());
+		scoreArea.setBorder(new EmptyBorder(10, 10, 10, 10));
+		
+		return scoreArea;
 	}
 	
 	private void disableButtons()
@@ -392,9 +419,9 @@ public class SimulationFrame
 		int bScore = lifeCountB + rollB;
 		
 		rollLabelA.setIcon(DICE_ICONS[rollA]);
-		scoreLabelA.setText("Score: " + lifeCountA + (lifeCountA == 1 ? " life " : " lives ") + "+ " + (rollA + 1) + " dice roll = " + aScore);
+		scoreTextA.setText("Score: " + lifeCountA + (lifeCountA == 1 ? " life " : " lives ") + "+ " + (rollA + 1) + " dice roll = " + (aScore + 1));
 		rollLabelB.setIcon(DICE_ICONS[rollB]);
-		scoreLabelB.setText("Score: " + lifeCountB + (lifeCountB == 1 ? " life " : " lives ") + "+ " + (rollB + 1) + " dice roll = " + bScore);
+		scoreTextB.setText("Score: " + lifeCountB + (lifeCountB == 1 ? " life " : " lives ") + "+ " + (rollB + 1) + " dice roll = " + (bScore + 1));
 		
 		if (dramaticRoll)
 		{
@@ -510,9 +537,9 @@ public class SimulationFrame
 		
 		// Clear icons
 		rollLabelA.setIcon(null);
-		scoreLabelA.setText(null);
+		scoreTextA.setText(null);
 		rollLabelB.setIcon(null);
-		scoreLabelB.setText(null);
+		scoreTextB.setText(null);
 	}
 	
 	private void openOptions()
