@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 public class MainGUI
 {
 	private static final LayoutManager BUTTON_CONTAINER_LAYOUT = new BorderLayout(25, 25);
-	private static final Border BUTTON_CONTAINER_BORDER = new EmptyBorder(10, 10, 10, 10);
+	private static final Border CONTAINER_BORDER = new EmptyBorder(10, 10, 10, 10);
 	
 	private static final Font BUTTON_FONT = new Font("Arial", Font.BOLD, 30);
 	
@@ -45,6 +45,29 @@ public class MainGUI
 		thread.start();
 	}
 	
+	private static void openRules()
+	{
+		Thread thread = new Thread(new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				new RulesFrame();
+			}
+		});
+		
+		thread.start();
+	}
+	
+	private static JPanel newContainerPanel()
+	{
+		JPanel containerPanel = new JPanel();
+		containerPanel.setBorder(CONTAINER_BORDER);
+		containerPanel.setLayout(new BorderLayout());
+		containerPanel.setPreferredSize(new Dimension(500,150));
+		return containerPanel;
+	}
+	
 	public static void main(String[] args)
 	{
 		JFrame mainFrame = new JFrame(Config.LAUNCHER_NAME);
@@ -57,6 +80,21 @@ public class MainGUI
 		// Setup buttons
 		JPanel buttonContainer;
 		
+		JButton openRules = new JButton("Basic Rules");
+		openRules.setFont(BUTTON_FONT);
+		openRules.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				openRules();
+			}
+		});
+		
+		buttonContainer = newContainerPanel();
+		buttonContainer.add(openRules);
+		mainPanel.add(buttonContainer);
+		
 		JButton openSim = new JButton("Open Simulator");
 		openSim.setFont(BUTTON_FONT);
 		openSim.addActionListener(new ActionListener()
@@ -68,12 +106,8 @@ public class MainGUI
 			}
 		});
 		
-		buttonContainer = new JPanel();
-		buttonContainer.setBorder(BUTTON_CONTAINER_BORDER);
-		buttonContainer.setLayout(new BorderLayout());
+		buttonContainer = newContainerPanel();
 		buttonContainer.add(openSim);
-		
-		buttonContainer.setPreferredSize(new Dimension(500, 200));
 		mainPanel.add(buttonContainer, BorderLayout.CENTER);
 		
 		JButton openProbGraph = new JButton("Open Probability Flowchart");
@@ -87,12 +121,8 @@ public class MainGUI
 			}
 		});
 		
-		buttonContainer = new JPanel();
-		buttonContainer.setBorder(BUTTON_CONTAINER_BORDER);
-		buttonContainer.setLayout(new BorderLayout());
+		buttonContainer = newContainerPanel();
 		buttonContainer.add(openProbGraph);
-		
-		buttonContainer.setPreferredSize(new Dimension(500, 200));
 		mainPanel.add(buttonContainer, BorderLayout.CENTER);
 		
 		mainFrame.add(mainPanel, BorderLayout.CENTER);
