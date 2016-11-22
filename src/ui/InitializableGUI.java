@@ -36,7 +36,7 @@ public abstract class InitializableGUI
 		initPanel.setLayout(new GridBagLayout());
 		
 		JLabel initLabel = new JLabel("Initializing...");
-		initLabel.setFont(new Font("Times New Roman", Font.PLAIN, 48));
+		initLabel.setFont(new Font("Arial", Font.PLAIN, 48));
 		
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.anchor = GridBagConstraints.CENTER;

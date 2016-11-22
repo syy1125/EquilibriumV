@@ -79,13 +79,13 @@ public class SimulationFrame
 	@Override
 	protected Dimension getDimensions()
 	{
-		return new Dimension(652, 598);
+		return new Dimension(800, 600);
 	}
 	
 	private void initStatusDisp()
 	{
 		statusDisp = new JLabel("Initializing...");
-		statusDisp.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 32));
+		statusDisp.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 32));
 		JPanel statusWrapper = new JPanel();
 		statusWrapper.add(statusDisp);
 		mainPanel.add(statusWrapper, BorderLayout.NORTH);
@@ -177,7 +177,7 @@ public class SimulationFrame
 		JPanel bottomPanel = new JPanel();
 		bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.PAGE_AXIS));
 		JLabel controlLabel = new JLabel("Game Controls");
-		controlLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		controlLabel.setFont(new Font("Arial", Font.BOLD, 20));
 		controlLabel.setAlignmentX(0.5F);
 		
 		bottomPanel.add(controlLabel);
@@ -187,8 +187,8 @@ public class SimulationFrame
 	
 	private void initPlayerPanels()
 	{
-		final Font STATES_FONT = new Font("Times New Roman", Font.PLAIN, 24);
-		final Font PLAYER_FONT = new Font("Times New Roman", Font.BOLD, 30);
+		final Font STATES_FONT = new Font("Arial", Font.PLAIN, 24);
+		final Font PLAYER_FONT = new Font("Arial", Font.BOLD, 30);
 		
 		JPanel playerPanel;
 		JLabel playerNameLabel;
@@ -221,7 +221,7 @@ public class SimulationFrame
 		playerPanel.add(rollLabelA);
 		
 		scoreLabelA = new JLabel();
-		scoreLabelA.setFont(STATES_FONT.deriveFont(20F));
+		scoreLabelA.setFont(STATES_FONT.deriveFont(18F));
 		scoreLabelA.setForeground(Config.PLAYER_A_COLOR);
 		playerPanel.add(scoreLabelA);
 		
@@ -260,7 +260,7 @@ public class SimulationFrame
 		
 		scoreLabelB = new JLabel();
 		scoreLabelB.setHorizontalAlignment(JLabel.RIGHT);
-		scoreLabelB.setFont(STATES_FONT.deriveFont(20F));
+		scoreLabelB.setFont(STATES_FONT.deriveFont(18F));
 		scoreLabelB.setForeground(Config.PLAYER_B_COLOR);
 		playerPanel.add(scoreLabelB);
 		

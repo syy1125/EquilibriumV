@@ -66,7 +66,7 @@ public class ProbabilityChartFrame
 	private void initHeader()
 	{
 		JLabel header = new JLabel("Hover over any item to see relevant information.");
-		header.setFont(new Font("Times New Roman", Font.BOLD, 30));
+		header.setFont(new Font("Arial", Font.BOLD, 30));
 		header.setBorder(new EmptyBorder(10, 10, 20, 10));
 		mainPanel.add(header, BorderLayout.NORTH);
 	}
@@ -128,7 +128,7 @@ public class ProbabilityChartFrame
 		
 		// Use colored text to indicate the lives of players
 		JLabel coloredLabel;
-		final Font LABEL_FONT = new Font("Times New Roman", Font.PLAIN, 24);
+		final Font LABEL_FONT = new Font("Arial", Font.PLAIN, 24);
 		coloredLabel = new JLabel("(");
 		coloredLabel.setFont(LABEL_FONT);
 		statePanel.add(coloredLabel);
@@ -162,7 +162,7 @@ public class ProbabilityChartFrame
 	private JPanel createPopupPanel(int lifeCountA, int lifeCountB)
 	{
 		// Make the JPanel popup
-		final Font POPUP_FONT = new Font("Times New Roman", Font.BOLD, 24);
+		final Font POPUP_FONT = new Font("Arial", Font.BOLD, 24);
 		JPanel popup = new JPanel();
 		
 		JPanel popupDisplay = new JPanel();
@@ -183,17 +183,17 @@ public class ProbabilityChartFrame
 		// Add state probability
 		BigFraction probability = PROBABILITY_CHART[lifeCountA][lifeCountB];
 		JLabel chanceTag = new JLabel("Probability of this state occurring in a game: ");
-		chanceTag.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		chanceTag.setFont(new Font("Arial", Font.PLAIN, 20));
 		popupDisplay.add(chanceTag);
 		JLabel chanceFraction = new JLabel(String.valueOf(probability));
-		chanceFraction.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		chanceFraction.setFont(new Font("Arial", Font.PLAIN, 20));
 		popupDisplay.add(chanceFraction);
 		
 		JLabel chanceEstimate = new JLabel("(approx. " + formatProbability(probability) + ")");
-		chanceEstimate.setFont(new Font("Times New Roman", Font.ITALIC, 20));
+		chanceEstimate.setFont(new Font("Arial", Font.ITALIC, 20));
 		popupDisplay.add(chanceEstimate);
 		
-		final Font WIN_PROB_FONT = new Font("Times New Roman", Font.ITALIC, 18);
+		final Font WIN_PROB_FONT = new Font("Arial", Font.ITALIC, 18);
 		// If the player won, give the winning probability.
 		if (lifeCountA == 0)
 		{
@@ -281,7 +281,7 @@ public class ProbabilityChartFrame
 	
 	private JPanel createTransitionPopup(int lifeCountA, int lifeCountB, boolean down)
 	{
-		final Font POPUP_FONT = new Font("Times New Roman", Font.PLAIN, 20);
+		final Font POPUP_FONT = new Font("Arial", Font.PLAIN, 20);
 		JPanel popupWrapper = new JPanel();
 		popupWrapper.setLayout(new BoxLayout(popupWrapper, BoxLayout.PAGE_AXIS));
 		popupWrapper.setBorder(new BevelBorder(BevelBorder.RAISED));

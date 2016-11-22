@@ -15,7 +15,7 @@ public class MainGUI
 	private static final LayoutManager BUTTON_CONTAINER_LAYOUT = new BorderLayout(25, 25);
 	private static final Border BUTTON_CONTAINER_BORDER = new EmptyBorder(10, 10, 10, 10);
 	
-	private static final Font BUTTON_FONT = new Font("Times New Roman", Font.BOLD, 30);
+	private static final Font BUTTON_FONT = new Font("Arial", Font.BOLD, 30);
 	
 	private static void openSim()
 	{
