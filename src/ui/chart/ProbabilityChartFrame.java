@@ -225,7 +225,7 @@ public class ProbabilityChartFrame
 		{
 			BigFraction[] winChances = ProbabilityCalculator.calcWinProbabilities(lifeCountA, lifeCountB);
 			
-			JLabel winLabelA = new JLabel("Here, probability that player A will win is");
+			JLabel winLabelA = new JLabel("Here, the probability that player A will win is");
 			winLabelA.setForeground(Config.PLAYER_A_COLOR);
 			winLabelA.setFont(WIN_PROB_FONT.deriveFont(Font.PLAIN));
 			popupDisplay.add(winLabelA);
@@ -235,7 +235,7 @@ public class ProbabilityChartFrame
 			winChanceA.setFont(WIN_PROB_FONT.deriveFont(Font.PLAIN));
 			popupDisplay.add(winChanceA);
 			
-			JLabel winLabelB = new JLabel("Here, probability that player B will win is");
+			JLabel winLabelB = new JLabel("Here, the probability that player B will win is");
 			winLabelB.setForeground(Config.PLAYER_B_COLOR);
 			winLabelB.setFont(WIN_PROB_FONT.deriveFont(Font.PLAIN));
 			popupDisplay.add(winLabelB);

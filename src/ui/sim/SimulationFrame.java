@@ -274,7 +274,7 @@ public class SimulationFrame
 		scoreTextB.setForeground(Config.PLAYER_B_COLOR);
 		
 		JPanel scoreWrapperB = new JPanel();
-		scoreWrapperB.setLayout(new BoxLayout(scoreWrapperB,BoxLayout.PAGE_AXIS));
+		scoreWrapperB.setLayout(new BoxLayout(scoreWrapperB, BoxLayout.PAGE_AXIS));
 		scoreWrapperB.add(Box.createVerticalGlue());
 		scoreWrapperB.add(scoreTextB);
 		scoreWrapperB.add(Box.createVerticalGlue());
@@ -329,9 +329,12 @@ public class SimulationFrame
 	
 	private void setButtonsEnabled(boolean enabled)
 	{
-		stepButton.setEnabled(enabled);
-		turnButton.setEnabled(enabled);
-		fullGameButton.setEnabled(enabled);
+		if (!checkGameEnd())
+		{
+			stepButton.setEnabled(enabled);
+			turnButton.setEnabled(enabled);
+			fullGameButton.setEnabled(enabled);
+		}
 		resetButton.setEnabled(enabled);
 		optionsButton.setEnabled(enabled);
 	}
